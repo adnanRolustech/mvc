@@ -1,11 +1,12 @@
 <?php
 
-/*
- * Student Model for queries on students table
- * inherited with baseModel 
+/**
+ * Student model file for student table quries
  */
 
+/**
+ * Student model for student related quries and inherited with baseModel
+ */
 class student extends baseModel {
-
-
+    
 }

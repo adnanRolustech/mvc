@@ -1,6 +1,10 @@
 <?php
 
-/*
+/**
+ * File for defining constants and including starting files
+ */
+
+/**
  * Defining constants
  */
 define("ROOT", dirname(dirname(__DIR__)));

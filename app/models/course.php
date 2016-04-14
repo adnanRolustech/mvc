@@ -1,10 +1,12 @@
 <?php
 
-/*
- * Course Model for queries on courses table 
+/**
+ * Course model file for course table quries
  */
 
+/**
+ * Course model for course related quries and inherited with baseModel
+ */
 class course extends baseModel {
-
     
 }

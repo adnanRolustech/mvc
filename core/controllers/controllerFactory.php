@@ -1,24 +1,32 @@
 <?php
 
-/*
- * controllerFactory class for creating object of controller classes
+/**
+ * Factory controller file for factory purpose
  */
 
+/**
+ * Factory controller for creating objects of controllers
+ */
 class controllerFactory {
-    
 
-    /*
-     * Function for creating objects of controller classes
-     */
+    /**
+     * Constructs required features for the notice board module
+     *
+     * @access public
+     * @return void
+     */ 
     public static function createControllerObject() {
         $url = controllerFactory::getContollerName();
         $conrollerObject = new $url['controller']();
         baseController::callAction($conrollerObject,$url);             
     }
-    
-    /*
+     
+    /**
      * Function for making array of controller, action and parmas
-     */    
+     *
+     * @access public
+     * @return url
+     */     
     public static function getContollerName() {
         if(!empty($_GET['url'])) {
             $urlArray = explode('/', $_GET['url']);

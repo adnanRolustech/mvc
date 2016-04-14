@@ -1,8 +1,13 @@
-<!--
-* General list page for listing of 
-* course, student and teacher
--->
-<?php if($this->controller == 'course') { ?>
+<?php
+
+/**
+ * General list file for list view.
+ */
+
+/**
+ * General list file of list form for course, student and teacher.
+ */
+if($this->controller == 'course') { ?>
 <!--Courses list--> 
     <h1>Courses List</h1>
     <?php if(!empty($this->variables)) { ?>

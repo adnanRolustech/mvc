@@ -1,12 +1,13 @@
 <?php
 
-/*
- * Students controller for students logic
- * that getting data from database
- * and setting data on views
+/**
+ * Students controller for students related logic.
  */
 
+/**
+ * Having functions of student and this controller is inherited with
+ * baseController
+ */
 class studentController extends baseController {
-   
-
+    
 }

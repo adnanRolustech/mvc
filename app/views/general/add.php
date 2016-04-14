@@ -1,8 +1,13 @@
-<!--
-* General add page of add form for 
-* course, student and teacher
--->
-<?php if($this->controller == 'course') { ?>
+<?php
+
+/**
+* General add file for add view.
+*/
+
+/**
+* General add file of add form for course, student and teacher.
+*/
+if($this->controller == 'course') { ?>
     <h1>Add Course</h1>
     <form class="register" action='<?php echo BASE_URL; ?>/course/add' method='post'>
         <input type="text" name="course_name" placeholder="Course Name"><br /><br />

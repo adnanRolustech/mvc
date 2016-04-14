@@ -1,11 +1,15 @@
-<!--
-* General add page of add form for 
-* course, student and teacher
--->
 <?php
-    $data = $this->variables[0];
-    if($this->controller == 'course') {
-?>
+
+/**
+ * General edit file for edit view.
+ */
+
+/**
+ * General edit file of edit form for course, student and teacher.
+ */
+$data = $this->variables[0];
+if ($this->controller == 'course') {
+    ?>
     <h1>Edit Course</h1>
     <form class="register" action='<?php echo BASE_URL; ?>/course/edit' method='post'>
         <input type="text" name="course_name" value="<?php echo $data['course_name']; ?>" placeholder="Course Name"><br /><br />

@@ -1,6 +1,10 @@
 <?php
 
-/*
+/**
+ * Config file for configurations required from user.
+ */
+
+/**
  * Set debuging level
  */
 define("DEBUG", true);

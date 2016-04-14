@@ -1,12 +1,13 @@
 <?php
 
-/*
- * Teachers controller for teachers logic
- * that getting data from database
- * and setting data on views
+/**
+ * Teachers controller for teacher related logic.
  */
 
+/**
+ * Having functions of teacher and this controller is inherited with
+ * baseController
+ */
 class teacherController extends baseController {
-  
     
 }

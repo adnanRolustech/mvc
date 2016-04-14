@@ -1,6 +1,10 @@
 <?php
 
-/*
+/**
+ * File for Error Reporting enable / disable and including core files
+ */
+
+/**
  * Function for Error Reporting enable / disable
  */
 if (DEBUG) {

@@ -1,12 +1,13 @@
 <?php
 
-/*
- * Users controller for users logic
- * that getting data from database
- * and setting data on views
+/**
+ * Course controller file for courses related logic.
  */
 
+/**
+ * Having functions of courses and this controller is inherited with
+ * baseController
+ */
 class courseController extends baseController {
- 
-
+    
 }
