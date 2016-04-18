@@ -24,8 +24,21 @@ require_once ROOT . DS . 'core' . DS . 'controllers' . DS . 'baseController.php'
 require_once ROOT . DS . 'core' . DS . 'views' . DS . 'viewManagerInterface.php';
 require_once ROOT . DS . 'core' . DS . 'views' . DS . 'viewManager.php';
 require_once ROOT . DS . 'core' . DS . 'models' . DS . 'modelFactory.php';
+require_once ROOT . DS . 'core' . DS . 'models' . DS . 'database.php';
+require_once ROOT . DS . 'core' . DS . 'models' . DS . 'dbalInterface.php'; 
+require_once ROOT . DS . 'core' . DS . 'models' . DS . 'dbal.php';
+require_once ROOT . DS . 'core' . DS . 'models' . DS . 'baseModel.php'; 
 
 /*
- * Calling factory method for creating objects
+ * Function for making array of controller, action and parmas
  */
-controllerFactory::createControllerObject();
+function loadMVC() {
+    if(!empty($_REQUEST['url'])) {
+        $urlArray = explode('/', $_REQUEST['url']);
+        $controller =  array_shift($urlArray);
+        $action =  array_shift($urlArray);     
+    }
+    $url['controller'] = !empty($controller) ? $controller.'Controller' : 'baseController';
+    $url['action'] = !empty($action) ? $action : 'index';
+    controllerFactory::createControllerObject($url);
+}

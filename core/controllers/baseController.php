@@ -38,17 +38,19 @@ class baseController implements controllerInterface {
     public function __construct() {
         $this->template = new viewManager();
         $this->template->controller = str_replace('Controller','',get_class ($this));
-        $this->model = modelFactory::createModelObject($this->template->controller);
+        if($this->template->controller != 'base') {
+            $this->model = modelFactory::createModelObject($this->template->controller);            
+        }
     }
     
     /**
-     * Function for rendring view
+     * Function for calling view
      * @access public
      * @param object $conrollerObject containing controller object
      * @param array $url
      * @return void
      */
-    public static function callAction($conrollerObject,$url) {
+    public static function callAction($conrollerObject, $url) {
         if (method_exists($url['controller'], $url['action'])) {
             $conrollerObject->$url['action']();
         } else {
@@ -99,10 +101,10 @@ class baseController implements controllerInterface {
     }
     
     /**
-     * Dashboard page for listing data
+     * listings page for listing data
      * @access public
      */
-    public function dashboard() {
+    public function listings() {
         $data = $this->model->getData();
         $this->set('general/list', $data);
     }
@@ -114,7 +116,7 @@ class baseController implements controllerInterface {
     public function add() {
         if (!empty($_POST)) {
             $is_added = $this->model->saveData($_POST);
-            $this->redirect(BASE_URL . "/".$this->template->controller."/dashboard");
+            $this->redirect(BASE_URL . "/".$this->template->controller."/listings");
         } else {
             $this->set('general/add', null);
         }
@@ -127,7 +129,7 @@ class baseController implements controllerInterface {
     public function edit() {
         if (!empty($_POST)) {
             $is_updated = $this->model->updateData($_POST);
-            $this->redirect(BASE_URL . "/".$this->template->controller."/dashboard");
+            $this->redirect(BASE_URL . "/".$this->template->controller."/listings");
         } else {
             $id = !empty($_GET['id']) ? $_GET['id'] : null;
             $data = $this->model->getDataById($id);
@@ -142,7 +144,7 @@ class baseController implements controllerInterface {
     public function delete() {
         $id = !empty($_GET['id']) ? $_GET['id'] : null;
         $is_deleted = $this->model->deleteData($id);
-        $this->redirect(BASE_URL . "/".$this->template->controller."/dashboard");
+        $this->redirect(BASE_URL . "/".$this->template->controller."/listings");
     }    
 
     /**

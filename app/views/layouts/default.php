@@ -34,13 +34,13 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?php echo BASE_URL; ?>/student/dashboard">Students</a>                           
+                            <a href="<?php echo BASE_URL; ?>/student/listings">Students</a>                           
                         </li>
                         <li>
-                            <a href="<?php echo BASE_URL; ?>/teacher/dashboard">Tachers</a>                           
+                            <a href="<?php echo BASE_URL; ?>/teacher/listings">Tachers</a>                           
                         </li>                                                                           
                         <li>
-                            <a href="<?php echo BASE_URL; ?>/course/dashboard">Courses</a>
+                            <a href="<?php echo BASE_URL; ?>/course/listings">Courses</a>
                         </li>                         
                     </ul>
                 </div>

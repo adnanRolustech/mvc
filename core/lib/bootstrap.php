@@ -28,3 +28,8 @@ define('JS_URL', BASE_URL . DS . 'public' . DS . 'js' . DS);
  * including start.php file
  */
 require_once 'loader.php';
+
+/*
+ * Calling function to load mvc
+ */
+loadMVC();

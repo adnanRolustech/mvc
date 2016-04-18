@@ -8,7 +8,7 @@
  * Base model is inherited with database class this class
  * making relationship between user models and database class
  */
-class baseModel extends database {
+class baseModel extends dbal {
 
     /**
      * For saving variables

@@ -63,6 +63,7 @@ class viewManager implements viewManagerInterface {
      * @return void
      */
     public static function errorPage($errorMessage) {
+        ini_set('display_errors', 'Off');
         include APP_VIEW_PATH . 'error.php';           
     }    
     

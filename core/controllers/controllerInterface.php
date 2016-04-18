@@ -53,10 +53,10 @@ interface controllerInterface {
     public function redirect($url);   
     
     /**
-     * Dashboard page for listing data
+     * listings page for listing data
      * @access public
      */     
-    public function dashboard();
+    public function listings();
 
     /**
      * Function for saving data

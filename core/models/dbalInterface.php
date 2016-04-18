@@ -7,7 +7,7 @@
 /**
  * Database Interface for defining which methods database class must implement
  */
-interface databaseInterface {
+interface dbalInterface {
 
 
     /**

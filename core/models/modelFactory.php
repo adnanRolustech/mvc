@@ -27,13 +27,12 @@ class modelFactory {
      * @param string $model Containing view name
      * @return void
      */    
-    public static function loadModels($model) { 
-        require_once ROOT . DS . 'core' . DS . 'models' . DS . 'databaseInterface.php'; 
-        require_once ROOT . DS . 'core' . DS . 'models' . DS . 'database.php';
-        require_once ROOT . DS . 'core' . DS . 'models' . DS . 'baseModel.php';         
+    public static function loadModels($model) {         
         if(file_exists(ROOT . DS . 'app' . DS . 'models' . DS . $model . '.php')){ 
             require_once ROOT . DS . 'app' . DS . 'models' . DS . $model . '.php';
-        }         
+        } else {
+            viewManager::errorPage('Sorry! '.$model.' model not found');
+        }        
     }
 
 }
