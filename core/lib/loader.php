@@ -28,6 +28,7 @@ require_once ROOT . DS . 'core' . DS . 'models' . DS . 'database.php';
 require_once ROOT . DS . 'core' . DS . 'models' . DS . 'dbalInterface.php'; 
 require_once ROOT . DS . 'core' . DS . 'models' . DS . 'dbal.php';
 require_once ROOT . DS . 'core' . DS . 'models' . DS . 'baseModel.php'; 
+require_once ROOT . DS . 'app' . DS . 'models' . DS . 'metadata' . DS . 'metadata.php';
 
 /*
  * Function for making array of controller, action and parmas

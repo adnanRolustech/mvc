@@ -97,4 +97,38 @@ class viewManager implements viewManagerInterface {
     public function fetch() {
         include (APP_VIEW_PATH . $this->view . '.php');            
     }
+    
+    /**
+     * Making form fields from table name and its data
+     */    
+    public function getTableFields($model, $data = null) {
+        $fields = array();
+        foreach (metadata::$tables as $key => $value) {
+            if ($key == $model) {
+                foreach ($value as $index => $type) {
+                    if($index == 'id') {            
+                        $fields[] = '<input type="hidden" name="'.$index.'" value="'.$data[$index].'">';
+                    } elseif($type == 'string') {
+                        $fields[] = '<input type="text" name="'.$index.'" value="'.$data[$index].'" placeholder="'.$index.'">';
+                    }
+                } 
+            }
+        }
+        return $fields;
+    } 
+    
+    /**
+     * Making list of fields from table
+     */    
+    public function getFieldsList($model) {
+        $fields = array();
+        foreach (metadata::$tables as $key => $value) {
+            if ($key == $model) {
+                foreach ($value as $index => $type) {           
+                    $fields[] = $index;
+                } 
+            }
+        }
+        return $fields;
+    }     
 }
