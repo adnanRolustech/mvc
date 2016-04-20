@@ -100,6 +100,10 @@ class viewManager implements viewManagerInterface {
     
     /**
      * Making form fields from table name and its data
+     * @access public
+     * @param string $model Having Model Name
+     * @param array $data
+     * @return void
      */    
     public function getTableFields($model, $data = null) {
         $fields = array();
@@ -119,6 +123,9 @@ class viewManager implements viewManagerInterface {
     
     /**
      * Making list of fields from table
+     * @access public
+     * @param string $model Having Model Name     
+     * @return void
      */    
     public function getFieldsList($model) {
         $fields = array();
