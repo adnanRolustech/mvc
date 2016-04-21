@@ -34,6 +34,28 @@ class viewManager implements viewManagerInterface {
      */      
     public $autoRender = true;
 
+    /**
+     * Getting variable name and values
+     * and assigning values to ViewManager class variable
+     * with index of variable name.
+     * @access public
+     * @param string $name Containing view name
+     */      
+    public function __get($name) {
+        $this->variables[$name];
+    }
+
+    /**
+     * Setting variable name and values
+     * and assigning values to name to ViewManager class variable
+     * with index of variable name.
+     * @access public
+     * @param string $name Containing view name
+     * @param array $value containing variables array
+     */    
+    public function __set($name, $value) {
+        $this->variables[$name] = $value;
+    }    
     
     /**
      * Getting variable name and values
@@ -44,11 +66,10 @@ class viewManager implements viewManagerInterface {
      * @param array $value containing variables array
      * @return void
      */
-    public function callView($view, $value) {
+    public function callView($view) {
         if (file_exists(APP_VIEW_PATH . $view . '.php')) {
             $this->view = $view;
         }
-        $this->variables = !empty($value) ? $value : array();
         $view = !empty($view) ? $view : 'home';
         if ($this->autoRender == true) {
             $layout = !empty($this->layout) ? $this->layout : 'default';
@@ -75,6 +96,7 @@ class viewManager implements viewManagerInterface {
      * @return void
      */
     public function render($layoutFile) {
+        $this->variables;
         include (APP_VIEW_PATH . 'layouts' . DS . $layoutFile . '.php');            
     }
     
@@ -86,6 +108,7 @@ class viewManager implements viewManagerInterface {
      * @return void
      */
     public function renderView($viewFile) {
+        $this->variables;
         include (APP_VIEW_PATH . $viewFile . '.php');            
     }    
 

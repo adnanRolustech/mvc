@@ -1,9 +1,11 @@
-<h1><?php echo ucfirst($this->controller); ?>s List</h1>
-<?php if(!empty($this->variables)) { ?>
+<h1><?php
+print_r($this->variables); die;
+echo ucfirst($this->variables['controller']); ?>s List</h1>
+<?php if(!empty($this->variables['data'])) { ?>
     <table style="width:100%"> 
         <tr>
             <?php
-                $data = $this->getFieldsList($this->controller);
+                $data = $this->getFieldsList($this->variables['controller']);
                 if(!empty($data)) {
                     foreach ($data as $fields) {
                         echo '<td>'.$fields.'</td>';
@@ -11,7 +13,7 @@
                 }
             ?>            
         </tr> 
-        <?php foreach ($this->variables as $values) {  ?>
+        <?php foreach ($this->variables['data'] as $values) {  ?>
         <tr>      
             <?php
                 if(!empty($data)) {
@@ -19,8 +21,8 @@
                         echo '<td>'.$values[$fields].'</td>';
                     }
             ?>              
-                <td><a href="<?php echo BASE_URL . "/$this->controller/edit?id=" . $values['id']; ?>">Edit</a></td>
-                <td><a href="<?php echo BASE_URL . "/$this->controller/delete?id=" . $values['id']; ?>">Delete</a></td>                
+                <td><a href="<?php echo BASE_URL . "/".$this->variables['controller']."/edit?id=" . $values['id']; ?>">Edit</a></td>
+                <td><a href="<?php echo BASE_URL . "/".$this->variables['controller']."/delete?id=" . $values['id']; ?>">Delete</a></td>                
             <?php } ?>
         </tr>
         <?php } ?>
@@ -30,4 +32,4 @@
         echo '<h1>No Record Found</h1>';
     }
 ?>   
-<a href="<?php echo BASE_URL . "/$this->controller/add"; ?>">Add <?php echo ucfirst($this->controller); ?></a>
+<a href="<?php echo BASE_URL . "/".$this->variables['controller']."/add"; ?>">Add <?php echo ucfirst($this->variables['controller']); ?></a>

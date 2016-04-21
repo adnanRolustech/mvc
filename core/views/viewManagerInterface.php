@@ -17,7 +17,7 @@ interface viewManagerInterface {
      * @param array $value containing variables array
      * @return void
      */
-    public function callView($view, $value);   
+    public function callView($view);   
 
     /**
      * Function to include error page with error message

@@ -14,20 +14,13 @@ class baseController implements controllerInterface {
      * For saving view manager object
      * @abstract
      */    
-    protected $template;
+    protected $template;   
     
     /**
      * For saving current class model object
      * @abstract
      */       
     private $model;
-    
-    /**
-     * For saving controller name
-     * @abstract
-     */       
-    protected $controller;
-
 
     /**
      * Constructer of Controller class
@@ -37,9 +30,10 @@ class baseController implements controllerInterface {
      */
     public function __construct() {
         $this->template = new viewManager();
-        $this->template->controller = str_replace('Controller','',get_class ($this));
-        if($this->template->controller != 'base') {
-            $this->model = modelFactory::createModelObject($this->template->controller);            
+        $this->controller = str_replace('Controller','',get_class ($this));
+        $this->template->controller = $this->controller;
+        if($this->controller != 'base') {
+            $this->model = modelFactory::createModelObject($this->controller);            
         }
     }
     
@@ -76,8 +70,8 @@ class baseController implements controllerInterface {
      * @param array $value Containing variables array
      * @return void
      */
-    public function set($view, $value) {
-        $this->template->callView($view, $value);            
+    public function set($view) {
+        $this->template->callView($view);            
     }
 
     /**
@@ -106,7 +100,8 @@ class baseController implements controllerInterface {
      */
     public function listings() {
         $data = $this->model->getData();
-        $this->set('general/list', $data);
+        $this->template->data = $data;
+        $this->set('general/list');
     }
     
     /**
@@ -116,9 +111,9 @@ class baseController implements controllerInterface {
     public function add() {
         if (!empty($_POST)) {
             $is_added = $this->model->saveData($_POST);
-            $this->redirect(BASE_URL . "/".$this->template->controller."/listings");
+            $this->redirect(BASE_URL . "/".$this->controller."/listings");
         } else {
-            $this->set('general/add', null);
+            $this->set('general/add');
         }
     } 
     
@@ -129,11 +124,12 @@ class baseController implements controllerInterface {
     public function edit() {
         if (!empty($_POST)) {
             $is_updated = $this->model->updateData($_POST);
-            $this->redirect(BASE_URL . "/".$this->template->controller."/listings");
+            $this->redirect(BASE_URL . "/".$this->controller."/listings");
         } else {
             $id = !empty($_GET['id']) ? $_GET['id'] : null;
             $data = $this->model->getDataById($id);
-            $this->set('general/edit', $data);
+            $this->template->data = $data;
+            $this->set('general/edit');
         }
     }  
     
@@ -144,7 +140,7 @@ class baseController implements controllerInterface {
     public function delete() {
         $id = !empty($_GET['id']) ? $_GET['id'] : null;
         $is_deleted = $this->model->deleteData($id);
-        $this->redirect(BASE_URL . "/".$this->template->controller."/listings");
+        $this->redirect(BASE_URL . "/".$this->controller."/listings");
     }    
 
     /**

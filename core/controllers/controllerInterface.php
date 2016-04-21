@@ -36,7 +36,7 @@ interface controllerInterface {
      * @param string $view Containing view name
      * @param array $value Containing variables array
      */     
-    public function set($view, $value);
+    public function set($view);
 
     /**
      * Function for loading model
