@@ -1,6 +1,4 @@
-<h1><?php
-print_r($this->variables); die;
-echo ucfirst($this->variables['controller']); ?>s List</h1>
+<h1><?php echo ucfirst($this->variables['controller']); ?>s List</h1>
 <?php if(!empty($this->variables['data'])) { ?>
     <table style="width:100%"> 
         <tr>
